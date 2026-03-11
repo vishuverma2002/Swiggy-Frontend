@@ -1,0 +1,15 @@
+.deleteModal {
+    padding-top: 1rem;
+    width: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 5px;
+}
+.deleteModal > div {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}

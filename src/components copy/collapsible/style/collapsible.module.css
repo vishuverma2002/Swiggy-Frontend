@@ -1,0 +1,49 @@
+.collapsible {
+  padding: 1px;
+  width: 100%;
+  color: var(--hearing-color);
+}
+.header {
+  width: 100%;
+}
+
+.content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 0;
+  display: flex;
+  justify-content: baseline;
+  flex-direction: column;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.active {
+  max-height: 30rem;
+  z-index: 1000;
+}
+.colored {
+  color: var(--primary-color);
+}
+.activeC {
+  /* border-top: 5px solid rgba(208, 160, 0, 0.323); */
+  border-bottom: 2px solid rgba(208, 160, 0, 0.174);
+  border-radius: 5px;
+}

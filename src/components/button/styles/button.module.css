@@ -1,0 +1,189 @@
+.btnPrimary,
+.btnSmall {
+  padding: 0.75rem 1.5rem;
+  margin-inline: 10px;
+  background-color: var(--button-color);
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--button-text-color, var(--primary-color));
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-wide);
+  min-width: 6rem;
+  max-width: fit-content;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.btnPrimary::before,
+.btnSmall::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btnPrimary:hover::before,
+.btnSmall:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btnSmall {
+  min-width: 4rem;
+  padding: 0.625rem 1.25rem;
+}
+
+.btnXSmall {
+  transition: all 0.3s ease;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: var(--primary-color);
+  height: 1.5rem;
+  font-size: 0.6rem;
+  padding-inline: 5px;
+  padding-block: 5px;
+  margin: 0;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.btnXSmall:hover {
+  background-color: color-mix(in srgb, var(--primary-color) 8%, transparent);
+}
+
+.bigbtnPrimary {
+  margin-left: 30px;
+  margin-right: 10px;
+  padding: 0.875rem 1.5rem;
+  background-color: var(--primary-color);
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  flex-grow: 1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.bigbtnPrimary::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.bigbtnPrimary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btnPrimary:hover,
+.bigbtnPrimary:hover,
+.btnSmall:hover {
+  background-color: var(--banner-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btnPrimary:active,
+.bigbtnPrimary:active,
+.btnSmall:active {
+  background-color: var(--banner-color);
+  color: white;
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.right {
+  position: absolute;
+  right: 0;
+  justify-self: flex-end !important;
+  align-self: center;
+}
+.top {
+  align-self: flex-start !important;
+}
+.left {
+  position: absolute;
+  left: 0;
+  justify-self: flex-end !important;
+  align-self: center;
+}
+@media only screen and (max-width: 1200px) {
+  .btnPrimary,
+  .bigbtnPrimary {
+    min-width: 5rem;
+    max-width: 12rem;
+    position: relative;
+  }
+}
+
+.loading {
+  background-color: color-mix(in lab, var(--button-color) 90%, var(--disabled-bg) 60%);
+  color: var(--disabled-color);
+  cursor: not-allowed;
+  position: relative;
+  min-height: 30px !important;
+  opacity: 0.7;
+}
+
+.disabled {
+  background-color: color-mix(in lab, var(--button-color) 90%, var(--disabled-bg) 60%);
+  color: var(--disabled-color);
+  cursor: not-allowed;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.disabled:hover {
+  background-color: color-mix(in lab, var(--button-color) 90%, var(--disabled-bg) 60%);
+  transform: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.loader {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  padding: 6px;
+  left: 42.5%;
+  top: 12%;
+  border: 5px solid var(--forth-color);
+  border-left: 5px solid var(--primary-color);
+  border-radius: 50%;
+
+  animation: loaderButton 1s linear infinite;
+}
+@keyframes loaderButton {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

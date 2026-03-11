@@ -1,0 +1,289 @@
+.card {
+  padding: 1rem 0.875rem;
+  min-width: 10rem;
+  min-height: 6rem;
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-weight: 400;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-primary-color);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.08) 100%), var(--forth-color);
+  border-radius: 12px;
+  border: 1px solid rgba(164, 164, 164, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  animation: cardFadeIn 0.5s ease-out;
+  overflow: visible;
+  z-index: 1;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  background: linear-gradient(135deg, rgba(56, 178, 120, 0.18) 0%, rgba(56, 178, 120, 0.12) 100%), linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.08) 100%);
+  color: var(--text-primary-color);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(56, 178, 120, 0.15), 0 4px 8px rgba(56, 178, 120, 0.08);
+  border-color: rgba(56, 178, 120, 0.4);
+}
+
+.card:hover p {
+  color: var(--text-primary-color);
+}
+
+.card:hover .cardLabel {
+  color: var(--heading-color);
+  opacity: 1;
+}
+
+.card:hover .cardValue {
+  color: var(--text-primary-color);
+}
+
+.card:hover .negative {
+  color: #dc2626 !important;
+}
+
+.card:hover .seperater {
+  background: linear-gradient(90deg, transparent, rgba(56, 178, 120, 0.6), transparent);
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.cardLabel {
+  color: var(--heading-color);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  line-height: var(--line-height-tight);
+  white-space: nowrap;
+  margin-bottom: 0.4rem;
+  opacity: 0.85;
+  transition: all 0.3s ease;
+}
+
+.cardValue {
+  color: var(--text-primary-color);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+  animation: numberFadeIn 0.5s ease-out 0.3s both;
+  transition: all 0.3s ease;
+}
+
+@keyframes numberFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.seperater {
+  width: 70%;
+  height: 1px;
+  margin: 0.5rem 0;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  transition: all 0.3s ease;
+}
+
+.negative {
+  color: #dc2626 !important;
+  font-weight: var(--font-weight-semibold);
+}
+
+.loaderContainer {
+  padding: 8px;
+  min-height: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infoIcon {
+  position: absolute;
+  bottom: 6px;
+  right: 8px;
+  color: var(--primary-color);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.infoIcon:hover {
+  opacity: 1;
+  transform: scale(1.15);
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.card:hover .infoIcon {
+  color: var(--primary-color);
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cardWithTooltip {
+  z-index: 49999 !important;
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, rgba(20, 90, 55, 0.95) 0%, rgba(15, 70, 40, 0.98) 100%);
+  color: white;
+  padding: 12px 16px;
+  font-size: var(--font-size-xs);
+  z-index: 50000 !important;
+  opacity: 0;
+  animation: tooltipFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.15);
+  pointer-events: auto;
+  border-radius: 8px;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.6;
+  letter-spacing: var(--letter-spacing-normal);
+  max-width: 280px;
+  min-width: 150px;
+  min-height: auto;
+  word-wrap: break-word;
+  white-space: normal;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+  transform-origin: bottom center;
+  isolation: isolate;
+  overflow: visible;
+  display: block;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid var(--primary-color);
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(5px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card {
+    min-width: 100%;
+    min-height: 5.5rem;
+    padding: 0.875rem 0.75rem;
+  }
+
+  .cardLabel {
+    font-size: 0.7rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .cardValue {
+    font-size: var(--font-size-base);
+  }
+
+  .seperater {
+    margin: 0.4rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    min-width: 100%;
+    min-height: 5rem;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .cardLabel {
+    font-size: 0.65rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .cardValue {
+    font-size: 0.95rem;
+  }
+
+  .seperater {
+    margin: 0.4rem 0;
+  }
+
+  .infoIcon {
+    bottom: 5px;
+    right: 6px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .tooltip {
+    bottom: calc(100% + 10px);
+    padding: 10px 14px;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    max-width: 240px;
+    min-width: 120px;
+  }
+}

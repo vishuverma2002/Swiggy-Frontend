@@ -1,0 +1,46 @@
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 0.3rem;
+  min-width: 100%;
+  background-color: var(--tertiary-color);
+  margin-bottom: 0.5rem;
+  overflow: visible;
+}
+
+.form::-webkit-scrollbar-corner {
+  display: none;
+}
+.form::-webkit-scrollbar {
+  background-color: var(--primary-color);
+  height: 12px;
+  width: 12px;
+}
+.form::-webkit-scrollbar-thumb {
+  background-color: var(--banner-color);
+}
+.form::-webkit-scrollbar-thumb:hover {
+  background-color: var(--banner-color);
+  opacity: 0.8;
+}
+.formheading {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  color: "red";
+}
+.formheading span h1 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.formheading span:nth-child(2) {
+  font-size: 0.7rem;
+  margin-right: 0;
+  font-style: italic;
+}
+.fullHeight {
+  flex: 1;
+}

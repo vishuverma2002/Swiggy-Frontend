@@ -1,0 +1,33 @@
+.InputRow {
+    min-height: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: transparent;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 8px;
+    position: relative;
+    /* border: 1px solid grey; */
+    width: 100%;
+    padding: 0.3rem;
+}
+
+.right {
+    justify-content: flex-end !important;
+}
+.center {
+    justify-content: center !important;
+}
+.space-between {
+    justify-content: space-between !important;
+}
+
+.InputRow > * {
+    width: max(12rem, calc(((100 / var(--col)) * 0.97) * 1%)) !important;
+}
+
+.InputRow span {
+    width: auto !important;
+}

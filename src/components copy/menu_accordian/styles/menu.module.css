@@ -1,0 +1,21 @@
+/* Active Page Indicator */
+.activePage {
+  position: relative;
+}
+
+.activePage::before {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 4px;
+  height: 100%;
+  left: -0.75rem;
+  top: 0;
+  background: var(--primary-color);
+  border-radius: 0 2px 2px 0;
+}
+
+.activeColor {
+  color: var(--primary-color) !important;
+  font-weight: var(--font-weight-semibold) !important;
+}

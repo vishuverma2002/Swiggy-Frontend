@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -41,6 +45,28 @@ a {
   }
 } */
 
+:root {
+  --primary-color: #fc8019;
+  --banner-color: #fc8019;
+  --secondary-color: #e2e2e23b;
+  --tertiary-color: #fffafa;
+  --forth-color: #ebebeb;
+  --text-primary-color: #191818;
+  --placeholder-color: #686b78;
+  --button-color: rgba(252, 128, 25, 0.1);
+  --button-text-color: #fc8019;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -50,4 +76,39 @@ a {
 body {
   position: relative;
   min-height: 100vh;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography - Swiggy-style hierarchy */
+h1,
+h2 {
+  font-weight: 700;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+p {
+  font-weight: 400;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Utility classes for typography */
+.sectionTitle {
+  font-weight: 600;
+}
+
+.cardTitle {
+  font-weight: 500;
 }

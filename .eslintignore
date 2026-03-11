@@ -1,0 +1,2 @@
+# Ignore components copy folder (backup/legacy - has pre-existing lint errors)
+src/components copy/

@@ -1,0 +1,270 @@
+.container {
+  margin-block: 1.1rem;
+  margin-inline: 0.3rem;
+  position: relative;
+  height: 2.75rem;
+  flex-shrink: 1;
+}
+.disabled {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  border-radius: 8px !important;
+  background-color: var(--disabled-bg) !important;
+  color: var(--disabled-color);
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+.disabled input {
+  pointer-events: none;
+  background-color: var(--disabled-bg) !important;
+  color: var(--disabled-color) !important;
+  border-color: var(--disabled-border) !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+  border-radius: 8px !important;
+}
+
+.container:hover {
+  z-index: 100;
+}
+.loaderContainer .loader {
+  border: 1px solid rgba(255, 255, 255, 0.154);
+  height: 30px !important;
+  width: 30px !important;
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  padding: 0;
+  transform: translateY(-50%);
+  border-radius: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--forth-color);
+}
+
+.label {
+  position: absolute;
+  transform: translateY(-1.3rem);
+  margin-left: 2.5px;
+  margin-bottom: 8px;
+  color: var(--heading-color);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  display: flex;
+  text-transform: capitalize;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-normal);
+  white-space: nowrap;
+}
+
+.input {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: absolute;
+  left: 0;
+  top: 0;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px !important;
+  background-color: var(--forth-color);
+  color: var(--text-primary-color);
+  height: 100%;
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+.input[data-secure="true"] {
+  -webkit-text-security: square;
+}
+@keyframes mount {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+.input:hover {
+  border-bottom: 1px solid var(--primary-color);
+  border-left: 1px solid var(--primary-color);
+  box-shadow: 0 4px 12px rgba(26, 116, 71, 0.15), 0 2px 4px rgba(26, 116, 71, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+.input:active,
+.input:focus:hover {
+  border-bottom: 1px solid var(--primary-color);
+  border-left: 1px solid var(--primary-color);
+  box-shadow: 0 4px 12px rgba(26, 116, 71, 0.15), 0 2px 4px rgba(26, 116, 71, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+.input:focus:not(:hover) {
+  border-bottom: 1px solid var(--primary-color);
+  border-left: 1px solid var(--primary-color);
+  box-shadow: 0 4px 12px rgba(26, 116, 71, 0.15), 0 2px 4px rgba(26, 116, 71, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--placeholder-color);
+  opacity: 0.85;
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-normal);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input:hover::placeholder {
+  opacity: 1;
+  color: var(--placeholder-color);
+}
+
+.input:focus::placeholder {
+  opacity: 0.65;
+}
+.input[type="date"] {
+  font-family: sans-serif;
+  padding-right: 0.8rem;
+}
+.input[type="datetime-local"] {
+  font-family: sans-serif;
+  padding-right: 0.8rem;
+}
+
+.input::-webkit-inner-spin-button {
+  display: none;
+}
+
+.error {
+  z-index: 2;
+  border: 1px solid #ff000056;
+  /* border: 1px solid rgba(255, 0, 0, 0.678);
+  box-shadow: 2px 0px 16px -4px rgba(255, 0, 0, 0.62);
+  -webkit-box-shadow: 2px 0px 16px -4px rgba(255, 0, 0, 0.62);
+  -moz-box-shadow: 2px 0px 16px -4px rgba(255, 0, 0, 0.62); */
+  animation: shake 0.5s both;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    flex-grow: 1;
+  }
+}
+
+.help {
+  margin-left: 6px;
+  cursor: pointer;
+  color: rgb(124, 124, 124);
+  display: inline-flex;
+  align-items: top;
+  position: relative;
+  font-size: 1.1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.help:hover {
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.helpBox {
+  background: linear-gradient(135deg, var(--forth-color) 0%, var(--secondary-color) 100%);
+  padding: 8px 12px;
+  border-radius: 8px;
+  position: absolute;
+  color: var(--text-primary-color);
+  line-height: 1.3rem;
+  bottom: calc(100% + 8px);
+  left: 0;
+  transform: translateX(0);
+  max-height: 12rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 0.75rem;
+  font-weight: 400;
+  display: none;
+  text-transform: none;
+  white-space: nowrap;
+  min-width: 180px;
+  max-width: 280px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+/* Arrow/Caret pointing to the help icon */
+.helpBox::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 10px;
+  transform: translateX(0);
+  border: 6px solid transparent;
+  border-top-color: var(--forth-color);
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
+}
+
+/* Scrollbar styling for help box */
+.helpBox::-webkit-scrollbar {
+  width: 4px;
+}
+
+.helpBox::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.helpBox::-webkit-scrollbar-thumb {
+  background: var(--banner-color);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.helpBox::-webkit-scrollbar-thumb:hover {
+  background: var(--banner-color);
+  opacity: 0.8;
+  opacity: 0.8;
+}
+
+.help:hover .helpBox {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+  animation: helpBoxFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes helpBoxFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(0) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}

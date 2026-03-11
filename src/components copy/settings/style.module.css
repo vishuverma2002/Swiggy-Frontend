@@ -1,0 +1,15 @@
+.right {
+  position: absolute;
+  right: 0;
+  justify-self: flex-end !important;
+  align-self: center;
+}
+.top {
+  align-self: flex-start !important;
+}
+.left {
+  position: absolute;
+  left: 0;
+  justify-self: flex-end !important;
+  align-self: center;
+}

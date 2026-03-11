@@ -1,25 +1,94 @@
 .navbar {
-  /* margin-left: auto; */
-  margin-left: 160px;
+  margin-left: auto;
   display: flex;
+  align-items: center;
+  gap: 36px;
   list-style: none;
-  gap: 35px;
-  font-weight: 700;
-  font-size: 20px;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.navbar li {
+  list-style: none;
 }
 
 .navLink {
   display: flex;
   align-items: center;
-  color: #686b78;
-  text-decoration: none;
   gap: 8px;
-  font-size: 20px;
-  transition: color 0.3s ease;
+  color: #3d4152;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  position: relative;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.navButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 500;
+}
+
+.navLink svg {
+  font-size: 18px;
+  flex-shrink: 0;
 }
 
 .navLink:hover {
-  color: orange;
+  color: var(--primary-color);
+  background-color: var(--button-color);
+}
+
+.navLink.signIn {
+  color: var(--primary-color);
+}
+
+.navLink.signIn:hover {
+  color: var(--primary-color);
+  background-color: rgba(252, 128, 25, 0.12);
+}
+
+.navLink.logout {
+  color: #e94560;
+}
+
+.navLink.logout:hover {
+  color: #fff;
+  background-color: rgba(233, 69, 96, 0.2);
+}
+
+.newBadge {
+  position: absolute;
+  top: -6px;
+  right: -4px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.cartWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cartCount {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #3d4152;
+  background: transparent;
 }
 
 .overlay {
@@ -65,13 +134,6 @@
   align-items: center;
 }
 
-.link {
-  color: orange;
-  cursor: pointer;
-  text-decoration: none;
-  font-weight: 500;
-  margin-left: 5px;
-}
 
 .input {
   width: 100%;
@@ -137,11 +199,278 @@
   margin-bottom: 10px;
 }
 
-.closeIcon {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 20px;
-  color: #333;
-  cursor: pointer;
+.drawerContent {
+  position: relative;
 }
+
+.drawerContent form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+}
+
+/* Form title - clean, no overlap, professional look */
+.formTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgba(2, 6, 12, 0.92);
+  margin: 0 0 24px 0;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  animation: formItemSlide 0.5s cubic-bezier(0.32, 0.72, 0, 1) 0.1s forwards;
+  opacity: 0;
+}
+
+.formSubheading {
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: #686b78;
+  line-height: 1.5;
+  text-align: left;
+  width: 100%;
+  animation: formItemSlide 0.5s cubic-bezier(0.32, 0.72, 0, 1) 0.1s forwards;
+  opacity: 0;
+}
+
+.formSubheading .link {
+  color: var(--primary-color);
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+}
+
+.formSubheading .link:hover {
+  color: var(--banner-color);
+  text-decoration: underline;
+  transform: translateX(2px);
+}
+
+@keyframes formItemSlide {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.inputWrapper {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  flex: 1 1 100%;
+  animation: formItemSlide 0.5s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  opacity: 0;
+}
+
+.drawerContent form .inputWrapper:nth-child(2) { animation-delay: 0.15s; }
+.drawerContent form .inputWrapper:nth-child(3) { animation-delay: 0.2s; }
+.drawerContent form .inputWrapper:nth-child(4) { animation-delay: 0.25s; }
+.drawerContent form .inputWrapper:nth-child(5) { animation-delay: 0.3s; }
+.drawerContent form .inputWrapper:nth-child(6) { animation-delay: 0.35s; }
+
+/* Professional stacked layout - label above input, real-world form style */
+.drawerContent .inputWrapper > div {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  margin: 0 !important;
+  margin-inline: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  min-height: unset !important;
+  height: auto !important;
+  gap: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Label - static position, proper spacing above input */
+.drawerContent .inputWrapper > div > span:first-child {
+  position: static !important;
+  transform: none !important;
+  margin: 0 0 8px 0 !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: rgba(2, 6, 12, 0.85) !important;
+  text-transform: capitalize !important;
+}
+
+/* Password toggle icon - position inside input area */
+.drawerContent .inputWrapper > div > span:nth-child(2) {
+  top: auto !important;
+  bottom: 10px !important;
+}
+
+.drawerContent .inputWrapper input {
+  position: static !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  border: none !important;
+  border-radius: 6px !important;
+  border-bottom: 1px solid var(--primary-color) !important;
+  border-left: 1px solid var(--primary-color) !important;
+  background-color: rgba(252, 128, 25, 0.06) !important;
+  padding: 10px 12px !important;
+  font-size: 15px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-shadow: none !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.drawerContent .inputWrapper input::placeholder {
+  font-size: 13px !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.drawerContent .inputWrapper input:hover {
+  background-color: rgba(252, 128, 25, 0.1) !important;
+  transform: translateX(2px);
+}
+
+.drawerContent .inputWrapper input:focus {
+  background-color: rgba(252, 128, 25, 0.08) !important;
+  box-shadow: none !important;
+  transform: translateX(2px);
+}
+
+.drawerContent .inputWrapper input:focus::placeholder {
+  opacity: 0.6 !important;
+}
+
+.terms {
+  font-size: 12px;
+  color: #93959f;
+  margin-top: 20px;
+  line-height: 1.5;
+  padding: 0 4px;
+  text-align: left;
+  max-width: 100%;
+  animation: formItemSlide 0.5s cubic-bezier(0.32, 0.72, 0, 1) 0.5s forwards;
+  opacity: 0;
+}
+
+/* Form button - smaller width, centered */
+.formButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  animation: formItemSlide 0.5s cubic-bezier(0.32, 0.72, 0, 1) 0.4s forwards;
+  opacity: 0;
+}
+
+.formButton > div {
+  width: auto !important;
+  max-width: 200px !important;
+  padding: 0.5rem 1.25rem !important;
+  font-size: 0.875rem !important;
+  text-align: center !important;
+}
+
+.drawerContent form > div:nth-last-child(2) {
+  animation: formItemSlide 0.5s cubic-bezier(0.32, 0.72, 0, 1) 0.45s forwards;
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-inline: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  align-self: stretch !important;
+}
+
+.drawerContent form > div:nth-last-child(2):hover {
+  transform: scale(1.02);
+}
+
+.toastWrapper {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 5001;
+}
+
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 180px;
+  padding: 0;
+}
+
+.searchWrapper > div {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  height: 36px;
+}
+
+.searchClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: #3d4152;
+  font-size: 18px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.searchClose:hover {
+  color: var(--primary-color);
+  background-color: var(--button-color);
+}
+
+.userMenu {
+  position: relative;
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.userDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background-color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  min-width: 170px;
+  padding: 8px 0;
+  z-index: 20;
+}
+
+.userMenuItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: #3d4152;
+  text-align: left;
+}
+
+.userMenuItem:hover {
+  background-color: var(--button-color);
+}
+
+.logoutItem {
+  color: #e94560;
+}
+

@@ -1,16 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import styles from "./online.module.css";
-import { useRef } from "react";
-import { BiSolidHeartCircle } from "react-icons/bi";
 import { LiaSortSolid } from "react-icons/lia";
 import { MdSort } from "react-icons/md";
 import { GoPlus } from "react-icons/go";
-import Image from "next/image";
-import { useState } from "react";
+import ImgContainer from "@/components/ImgContainer";
 import FilterModal from "../Popup/page";
 import Best from "../BestPlace/page";
+import Button from "@/components/button/Button";
 const restaurant = [
   {
     id: "1",
@@ -19,8 +17,8 @@ const restaurant = [
     sub: "North Indian, South Indian, Indian...",
     place: "Chhindwara Locality",
     rating: "3.7 - 50-55 mins",
+    offer: "60% OFF UPTO ₹120",
   },
-
   {
     id: "2",
     path: "/images/img9.jpeg",
@@ -28,6 +26,7 @@ const restaurant = [
     sub: "North Indian, Chinese,Fast Food... ",
     place: "Mohan Nagar",
     rating: "4.4 - 45-50 mins",
+    offer: "50% OFF UPTO ₹100",
   },
   {
     id: "3",
@@ -36,6 +35,7 @@ const restaurant = [
     sub: "Bakery, Ice-cream, Snacks,...",
     place: "Parasia Road",
     rating: "4.3 - 45-50 mins",
+    offer: "70% OFF UPTO ₹140",
   },
   {
     id: "4",
@@ -44,6 +44,7 @@ const restaurant = [
     sub: "North Indian,South Indian, Chinese,...",
     place: "Railway Staiton",
     rating: "4.1 - 55-60 mins",
+    offer: "ITEMS AT ₹29",
   },
   {
     id: "5",
@@ -52,6 +53,7 @@ const restaurant = [
     sub: "North Indian, Biryani, Tandoor,...",
     place: "Chhindwara Locality",
     rating: "4.3 - 35-40 mins",
+    offer: "60% OFF UPTO ₹120",
   },
   {
     id: "6",
@@ -60,6 +62,7 @@ const restaurant = [
     sub: "North Indian, South Indian, Indian...",
     place: "Crossing Republick",
     rating: "4.3 - 45-50 mins",
+    offer: "50% OFF UPTO ₹100",
   },
   {
     id: "7",
@@ -69,6 +72,7 @@ const restaurant = [
     sub: "North Indian, Chinese,...",
     place: "Chhindwara Locality",
     rating: "4.3 - 45-50 mins",
+    offer: "70% OFF UPTO ₹140",
   },
   {
     id: "8",
@@ -77,6 +81,7 @@ const restaurant = [
     sub: "Waffle, Desserts, Ice Cream,...",
     place: "Mohan Nagar",
     rating: "4.5 - 40-45 mins",
+    offer: "ITEMS AT ₹29",
   },
   {
     id: "9",
@@ -85,6 +90,7 @@ const restaurant = [
     sub: "North Indian, South Indian, Indian...",
     place: "Chhindwara Locality",
     rating: "3.7 - 50-55 mins",
+    offer: "60% OFF UPTO ₹120",
   },
   {
     id: "10",
@@ -93,6 +99,7 @@ const restaurant = [
     sub: "North Indian, South Indian, Indian...",
     place: "Chhindwara Locality",
     rating: "3.7 - 50-55 mins",
+    offer: "50% OFF UPTO ₹100",
   },
   {
     id: "11",
@@ -101,6 +108,7 @@ const restaurant = [
     sub: "North Indian, South Indian, Indian...",
     place: "Chhindwara Locality",
     rating: "3.7 - 50-55 mins",
+    offer: "70% OFF UPTO ₹140",
   },
   {
     id: "12",
@@ -109,6 +117,7 @@ const restaurant = [
     sub: "North Indian, South Indian, Indian...",
     place: "Chhindwara Locality",
     rating: "3.7 - 50-55 mins",
+    offer: "ITEMS AT ₹29",
   },
   {
     id: "13",
@@ -117,6 +126,7 @@ const restaurant = [
     sub: "North Indian, South Indian, Indian...",
     place: "Chhindwara Locality",
     rating: "3.7 - 50-55 mins",
+    offer: "60% OFF UPTO ₹120",
   },
   {
     id: "14",
@@ -125,6 +135,7 @@ const restaurant = [
     sub: "North Indian, South Indian, Indian...",
     place: "Chhindwara Locality",
     rating: "3.7 - 50-55 mins",
+    offer: "50% OFF UPTO ₹100",
   },
   {
     id: "15",
@@ -133,6 +144,7 @@ const restaurant = [
     sub: "North Indian, South Indian, Indian...",
     place: "Chhindwara Locality",
     rating: "3.7 - 50-55 mins",
+    offer: "70% OFF UPTO ₹140",
   },
   {
     id: "16",
@@ -142,6 +154,7 @@ const restaurant = [
     sub: "North Indian, Chinese,...",
     place: "Chhindwara Locality",
     rating: "4.3 - 45-50 mins",
+    offer: "ITEMS AT ₹29",
   },
   //   {
   //     id: "17",
@@ -205,24 +218,79 @@ const OnlineDelivery = () => {
     <>
       <div className={styles.container}>
         <div className={styles.header}>
-          <div style={{ marginLeft: "120px" }}>
+          <div>
             <h1>Restaurants with online food delivery in Ghaziabad</h1>
           </div>
         </div>
         <header>
           <div style={{ padding: "20px" }}>
             <div className={styles.fixed}>
-              <div onClick={openModal} className={styles.btns}>
-                Filters <LiaSortSolid />
-              </div>
-              <div className={styles.btns}>
-                Sort By <MdSort />
-              </div>
-              <div className={styles.btns}>
-                Ratings <GoPlus />
-              </div>
-              <div className={styles.btns}>Pure Veg</div>
-              <div className={styles.btns}>Offers</div>
+              <Button
+                title={
+                  <>
+                    Filters <LiaSortSolid />
+                  </>
+                }
+                onClick={openModal}
+                btnType="btnPrimary"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                  minWidth: "85px",
+                }}
+              />
+              <Button
+                title={
+                  <>
+                    Sort By <MdSort />
+                  </>
+                }
+                btnType="btnPrimary"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                  minWidth: "85px",
+                }}
+              />
+              <Button
+                title={
+                  <>
+                    Ratings <GoPlus />
+                  </>
+                }
+                btnType="btnPrimary"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                  minWidth: "85px",
+                }}
+              />
+              <Button
+                title="Pure Veg"
+                btnType="btnPrimary"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  minWidth: "85px",
+                }}
+              />
+              <Button
+                title="Offers"
+                btnType="btnPrimary"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  minWidth: "85px",
+                }}
+              />
             </div>
 
             <FilterModal
@@ -235,28 +303,12 @@ const OnlineDelivery = () => {
         </header>
         <div className={styles.imaged}>
           <div className={styles.imageSection}>
-            {restaurant.map((cat, indexes) => {
-              return (
-                <div key={indexes} className={styles.imageCard}>
-                  <Image
-                    width={200}
-                    height={200}
-                    src={cat.path}
-                    alt={cat.name}
-                    className={styles.image}
-                  />
-                  <div key={cat.name} className={styles.heading}>
-                    <h2>{cat.heading}</h2>
-                    <div className={styles.rating}>
-                      <BiSolidHeartCircle style={{ color: "green" }} />
-                      {cat.rating}
-                    </div>
-                    <div className={styles.sub}>{cat.sub}</div>
-                    <div className={styles.place}> {cat.place}</div>
-                  </div>
-                </div>
-              );
-            })}
+            {restaurant.map((cat, indexes) => (
+              <ImgContainer
+                key={cat.id || indexes}
+                data={cat}
+              />
+            ))}
           </div>
         </div>
         <hr

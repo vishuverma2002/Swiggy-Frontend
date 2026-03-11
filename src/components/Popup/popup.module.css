@@ -73,7 +73,7 @@
 
 .categoryItem:hover,
 .categoryItem.active {
-  color: #ff4500;
+  color: #fc8019;
   font-weight: bold;
 }
 
@@ -109,7 +109,7 @@
 .applyButton {
   width: 100%;
   padding: 10px;
-  background-color: #ff4500;
+  background-color: #fc8019;
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -120,7 +120,7 @@
 }
 
 .applyButton:hover {
-  background-color: #e63e00;
+  background-color: #e66b00;
 }
 
 @media (max-width: 768px) {

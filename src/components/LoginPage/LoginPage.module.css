@@ -1,0 +1,662 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+/* ========== Container & Layout (Fullscreen background) ========== */
+.container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: 'Outfit', var(--font-poppins, 'Poppins', sans-serif), system-ui, sans-serif;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background-image: url("/loginFood.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.04);
+  animation: bgZoom 20s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes bgZoom {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(0, 0, 0, 0.72), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(0, 0, 0, 0.72), transparent 55%),
+    linear-gradient(to right, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1120px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.heroSection {
+  flex: 1.1;
+  display: flex;
+  align-items: center;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px 0;
+  color: #ffffff;
+  max-width: 480px;
+  gap: 18px;
+  animation: heroFadeIn 0.8s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.heroTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+}
+
+.heroTitle {
+  font-size: 2.6rem;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  animation: heroTitleGlow 3.2s ease-in-out infinite alternate;
+}
+
+@keyframes heroTitleGlow {
+  0% {
+    transform: translateY(0);
+    text-shadow:
+      0 16px 40px rgba(0, 0, 0, 0.55),
+      0 0 0 rgba(252, 128, 25, 0);
+  }
+  50% {
+    transform: translateY(-2px);
+    text-shadow:
+      0 18px 46px rgba(0, 0, 0, 0.7),
+      0 0 24px rgba(252, 128, 25, 0.6);
+  }
+  100% {
+    transform: translateY(0);
+    text-shadow:
+      0 16px 40px rgba(0, 0, 0, 0.55),
+      0 0 0 rgba(252, 128, 25, 0);
+  }
+}
+
+.heroHighlight {
+  background: linear-gradient(135deg, #ffd166 0%, #ff9f1c 40%, #ff6a3d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroSubtitle {
+  font-size: 0.98rem;
+  line-height: 1.5;
+  max-width: 420px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.heroBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.heroPill {
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(10px);
+  animation: badgeFadeUp 0.6s ease-out both;
+}
+
+@keyframes badgeFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.heroPill:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.heroPill:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.imageIndicators {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.indicator:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+
+.indicatorActive {
+  width: 28px;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== Right Section - Floating Login Form ========== */
+.formSection {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.formWrapper {
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+}
+
+.formWrapper::before,
+.formWrapper::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(26px);
+  opacity: 0.7;
+  z-index: -1;
+  animation: floatBlob 10s ease-in-out infinite alternate;
+}
+
+.formWrapper::before {
+  inset: -40px 40% auto -40px;
+  background: radial-gradient(circle at top, rgba(252, 128, 25, 0.45), transparent 60%);
+}
+
+.formWrapper::after {
+  inset: auto -40px -40px 40%;
+  background: radial-gradient(circle at bottom, rgba(244, 63, 94, 0.32), transparent 60%);
+  animation-delay: 1.5s;
+}
+
+@keyframes floatBlob {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(6px, -8px, 0) scale(1.06);
+  }
+}
+
+.formCard {
+  position: relative;
+  background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.86));
+  backdrop-filter: blur(22px);
+  border-radius: 24px;
+  padding: 28px 22px;
+  box-shadow:
+    0 18px 45px rgba(15, 23, 42, 0.8),
+    0 0 0 1px rgba(148, 163, 184, 0.35);
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  animation: formAppear 0.6s 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes formAppear {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.formCard:hover {
+  box-shadow:
+    0 22px 56px rgba(15, 23, 42, 0.95),
+    0 0 0 1px rgba(248, 250, 252, 0.08);
+  transform: translateY(-4px) scale(1.015);
+  transition:
+    box-shadow 0.4s ease,
+    transform 0.3s ease;
+}
+
+/* ========== Logo Section ========== */
+.logoSection {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logoIcon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 12px;
+  background: linear-gradient(135deg, #fc8019 0%, #e85d04 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 8px 24px rgba(252, 128, 25, 0.35);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fc8019 0%, #e85d04 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 0.9375rem;
+  color: #e5e7eb;
+  font-weight: 400;
+}
+
+/* ========== Form ========== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputGroup {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 48px 14px 18px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #f9fafb;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  border-radius: 14px;
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.input:hover {
+  border-color: #fbbf77;
+  background: rgba(15, 23, 42, 0.98);
+}
+
+.input:focus {
+  border-color: #fc8019;
+  box-shadow: 0 0 0 1px #fc8019;
+  background: rgba(15, 23, 42, 0.98);
+}
+
+.input:focus::placeholder {
+  color: #c4c4c4;
+}
+
+/* Password toggle */
+.passwordToggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  color: #686b78;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.passwordToggle:hover {
+  color: #f97316;
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.passwordToggle:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.toggleIcon {
+  width: 22px;
+  height: 22px;
+}
+
+/* Options row */
+.optionsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #fc8019;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
+.checkbox:focus-visible {
+  outline: 2px solid #fc8019;
+  outline-offset: 2px;
+}
+
+.checkboxLabel:hover .checkbox {
+  transform: scale(1.05);
+}
+
+.checkboxText {
+  font-size: 0.9375rem;
+  color: #e5e7eb;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.checkboxLabel:hover .checkboxText {
+  color: #f9fafb;
+}
+
+.forgotLink {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fc8019;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.forgotLink:hover {
+  color: #e85d04;
+  text-decoration: underline;
+}
+
+.forgotLink:focus-visible {
+  outline: 2px solid #fc8019;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.forgotLinkButton {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fc8019;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.forgotLinkButton:hover {
+  color: #e85d04;
+  text-decoration: underline;
+}
+
+.forgotLinkButton:focus-visible {
+  outline: 2px solid #fc8019;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.errorText {
+  font-size: 0.875rem;
+  color: #dc2626;
+  margin: -8px 0 0;
+}
+
+/* Submit button */
+.submitButton {
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: #fff;
+  background: linear-gradient(135deg, #fc8019 0%, #e85d04 100%);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow:
+    0 12px 30px rgba(248, 113, 113, 0.4),
+    0 0 0 1px rgba(248, 250, 252, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 4px;
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(252, 128, 25, 0.45);
+}
+
+.submitButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submitButton:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.loadingState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Sign up link */
+.signUpText {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 0.9375rem;
+  color: #e5e7eb;
+}
+
+.signUpLink {
+  font-weight: 600;
+  color: #fc8019;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.signUpLink:hover {
+  color: #fed7aa;
+  text-decoration: underline;
+}
+
+.signUpLink:focus-visible {
+  outline: 2px solid #fc8019;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ========== Responsive - Stack vertically on smaller screens ========== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 18px;
+  }
+
+  .heroContent {
+    max-width: 100%;
+    padding: 0 0 20px;
+  }
+
+  .formSection {
+    padding-top: 0;
+  }
+
+  .formCard {
+    padding: 32px 28px;
+  }
+
+   .content {
+     flex-direction: column-reverse;
+     gap: 28px;
+   }
+
+   .heroSection {
+     justify-content: center;
+     text-align: center;
+   }
+
+   .heroContent {
+     align-items: center;
+   }
+}
+
+@media (max-width: 480px) {
+  .heroContent {
+    padding: 0 4px 16px;
+  }
+
+  .heroTitle {
+    font-size: 1.8rem;
+  }
+
+  .heroSubtitle {
+    font-size: 0.9rem;
+  }
+
+  .formSection {
+    padding: 0;
+  }
+
+  .formCard {
+    padding: 28px 22px;
+    border-radius: 20px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .input {
+    padding: 12px 44px 12px 16px;
+  }
+
+  .optionsRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

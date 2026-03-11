@@ -2,27 +2,21 @@ import React from "react";
 import styles from "./best.module.css";
 
 const RenderList = ({ data, title }) => (
-  <>
-    <div className={styles.header}>
-      <div
-        style={{
-          marginLeft: "120px",
-          marginTop: title === "Best Places to eat across cities" ? 0 : "40px",
-        }}
-      >
-        <h1>{title}</h1>
-      </div>
+  <section className={styles.section}>
+    <div className={styles.sectionHeader}>
+      <h2 className={styles.sectionTitle}>{title}</h2>
     </div>
-    <div className={styles.box}>
-      <div className={styles.boxes}>
-        {data.map((item, index) => (
-          <div key={index} className={styles.card}>
-            <div className={styles.store}>{item.title}</div>
-          </div>
-        ))}
-      </div>
+    <div className={styles.grid}>
+      {data.map((item, index) => (
+        <div
+          key={index}
+          className={`${styles.card} ${item.title === "Show More" ? styles.showMore : ""}`}
+        >
+          <div className={styles.store}>{item.title}</div>
+        </div>
+      ))}
     </div>
-  </>
+  </section>
 );
 
 const Best = () => {
@@ -61,13 +55,7 @@ const Best = () => {
       <div className={styles.container}>
         <RenderList data={rests} title="Best Places to eat across cities" />
         <RenderList data={rests1} title="Best Cuisines Near Me" />
-        <hr
-          style={{
-            margin: "25px 0px",
-            border: "1px solid #cbcbcb",
-            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-          }}
-        />
+        <hr className={styles.divider} />
       </div>
     </>
   );

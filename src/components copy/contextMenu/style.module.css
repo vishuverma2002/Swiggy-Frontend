@@ -1,0 +1,73 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--zIndex, 10001);
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.contextMenu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--context-menu-bg, var(--tertiary-color));
+  border-radius: 8px;
+  box-shadow: var(--context-menu-shadow, 0 4px 20px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1));
+  overflow: hidden;
+  min-width: 200px;
+  border: 1px solid var(--context-menu-border, rgba(0, 0, 0, 0.08));
+  animation: slideIn 0.2s ease-out, fadeIn 0.2s ease-out;
+  transform-origin: top left;
+  z-index: var(--zIndex, 10001);
+  pointer-events: auto;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.contextMenu > span {
+  color: var(--text-primary-color);
+  white-space: nowrap;
+  font-size: 11px;
+  background-color: transparent;
+  padding: 10px 16px;
+  text-align: left;
+  flex: 1;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  font-weight: 500;
+  position: relative;
+  user-select: none;
+}
+
+.contextMenu > span:not(:last-child) {
+  border-bottom: 1px solid var(--context-menu-item-border, rgba(0, 0, 0, 0.08));
+}
+.contextMenu > span:hover {
+  background-color: var(--context-menu-item-hover-bg, rgba(26, 116, 71, 0.1));
+  color: var(--text-primary-color);
+  padding-left: 20px;
+  font-weight: 600;
+}
+.contextMenu > span:active {
+  background-color: var(--context-menu-item-active-bg, rgba(26, 116, 71, 0.15));
+  transform: scale(0.98);
+}

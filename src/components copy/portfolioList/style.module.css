@@ -1,0 +1,719 @@
+.animate {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Content Container */
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  gap: 1.25rem;
+  padding: 0.5rem 0;
+}
+
+/* Search Section */
+.searchSection {
+  flex-shrink: 0;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, rgba(26, 116, 71, 0.06) 0%, rgba(26, 116, 71, 0.02) 50%, rgba(26, 116, 71, 0.04) 100%);
+  border-radius: 16px;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+  animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.searchSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  animation: shimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.searchSection::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  opacity: 0.15;
+  border-radius: 2px;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  50%, 100% {
+    left: 100%;
+  }
+}
+
+/* Enhanced Search Wrapper */
+.searchWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.searchWrapper :global(div[class*="container"]) {
+  margin: 0 !important;
+  height: 3.25rem !important;
+}
+
+.searchWrapper :global(input[class*="input"]) {
+  background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%) !important;
+  border: none !important;
+  border-radius: 14px !important;
+  height: 3.25rem !important;
+  padding-left: 3.25rem !important;
+  padding-right: 1.5rem !important;
+  font-size: 0.95rem !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04), inset 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-weight: 500 !important;
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.searchWrapper :global(input[class*="input"]:focus),
+.searchWrapper :global(input[class*="input"]:active) {
+  box-shadow: 0 8px 28px rgba(26, 116, 71, 0.14), 0 4px 14px rgba(26, 116, 71, 0.1), 0 0 0 3px rgba(26, 116, 71, 0.08) !important;
+  transform: translateY(-2px) scale(1.005) !important;
+  border: none !important;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fffe 100%) !important;
+}
+
+.searchWrapper :global(input[class*="input"]:hover:not(:focus)) {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08), 0 3px 8px rgba(0, 0, 0, 0.05) !important;
+  transform: translateY(-1px) !important;
+}
+
+.searchWrapper :global(input[class*="input"]::placeholder) {
+  color: rgba(0, 0, 0, 0.35) !important;
+  font-weight: 400 !important;
+}
+
+.searchWrapper :global(svg[class*="icon"]) {
+  color: var(--primary-color) !important;
+  font-size: 1.15rem !important;
+  width: 1.15rem !important;
+  height: 1.15rem !important;
+  top: 50% !important;
+  left: 1.15rem !important;
+  transform: translateY(-50%) !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  animation: iconPulse 2.5s ease-in-out infinite !important;
+}
+
+.searchWrapper:focus-within :global(svg[class*="icon"]) {
+  color: var(--primary-color) !important;
+  transform: translateY(-50%) scale(1.15) rotate(90deg) !important;
+  animation: none !important;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    opacity: 0.65;
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.05);
+  }
+}
+
+/* Loader Container */
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  flex: 1;
+}
+
+/* Tabs Section */
+.tabsSection {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: calc(70vh - 150px);
+}
+
+/* Table Container */
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: calc(70vh - 200px);
+  min-height: 300px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
+  position: relative;
+  display: block;
+}
+
+.tableContainer table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+  table-layout: fixed;
+  max-width: 100%;
+}
+
+/* Ensure all table cells respect boundaries and have consistent padding */
+.tableContainer table th,
+.tableContainer table td {
+  box-sizing: border-box !important;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Ensure consistent padding between headers and cells */
+.tableContainer table thead th {
+  padding: 0.875rem 1rem !important;
+  vertical-align: middle !important;
+}
+
+.tableContainer table tbody td {
+  padding: 0.875rem 1rem !important;
+  vertical-align: middle !important;
+}
+
+.tableContainer thead tr th.tableHeader {
+  background: rgba(26, 116, 71, 0.08) !important;
+  color: var(--primary-color) !important;
+  border-bottom: 2px solid rgba(26, 116, 71, 0.1) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04) !important;
+}
+
+.tableContainer::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.tableContainer::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+}
+
+.tableContainer::-webkit-scrollbar-thumb {
+  background: var(--banner-color);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.tableContainer::-webkit-scrollbar-thumb:hover {
+  background: var(--banner-color);
+  opacity: 0.8;
+}
+
+/* Table Header */
+.tableHeader {
+  background: rgba(26, 116, 71, 0.08) !important;
+  font-weight: 600 !important;
+  color: #000000 !important;
+  text-transform: uppercase;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.5px;
+  padding: 0.875rem 1rem !important;
+  border-bottom: 2px solid rgba(26, 116, 71, 0.1) !important;
+  text-align: left !important;
+  white-space: nowrap;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 5 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04) !important;
+  vertical-align: middle !important;
+  box-sizing: border-box !important;
+  line-height: 1.5 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Action Header - Centered */
+.tableContainer table thead th:first-child.tableHeader {
+  text-align: center !important;
+  width: 120px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
+  padding: 0.875rem 1rem !important;
+  box-sizing: border-box !important;
+  vertical-align: middle !important;
+}
+
+/* Portfolio ID Header - Left aligned */
+.tableContainer table thead th:nth-child(2).tableHeader {
+  text-align: left !important;
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+}
+
+/* Portfolio Name Header - Left aligned */
+.tableContainer table thead th:nth-child(3).tableHeader {
+  text-align: left !important;
+}
+
+/* Table Row */
+.tableRow {
+  transition: background 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
+  background-color: transparent !important;
+}
+
+.tableRow:hover {
+  background: linear-gradient(135deg, rgba(26, 116, 71, 0.06) 0%, rgba(26, 116, 71, 0.02) 100%) !important;
+  box-shadow: 0 2px 8px rgba(26, 116, 71, 0.08);
+}
+
+.tableRow:hover::before {
+  transform: scaleY(1);
+}
+
+/* Action Cell */
+.actionCell {
+  text-align: center !important;
+  padding: 0.875rem 1rem !important;
+  width: 120px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
+  vertical-align: middle !important;
+  position: relative;
+  box-sizing: border-box !important;
+  display: table-cell !important;
+}
+
+/* Ensure Action column header and cells match exactly - override all base table styles */
+.tableContainer table thead th:first-child {
+  text-align: center !important;
+  width: 120px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
+  padding: 0.875rem 1rem !important;
+  box-sizing: border-box !important;
+  vertical-align: middle !important;
+}
+
+.tableContainer table tbody td:first-child {
+  text-align: center !important;
+  width: 120px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
+  padding: 0.875rem 1rem !important;
+  box-sizing: border-box !important;
+  display: table-cell !important;
+  vertical-align: middle !important;
+}
+
+/* Refresh Button */
+.refreshBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(26, 116, 71, 0.1) 0%, rgba(26, 116, 71, 0.05) 100%);
+  border: 1.5px solid rgba(26, 116, 71, 0.2);
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  flex-shrink: 0;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+/* 
+.refreshBtn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(26, 116, 71, 0.15);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+} */
+
+/* .refreshBtn:hover::before {
+  width: 100%;
+  height: 100%;
+} */
+
+.refreshBtn:hover {
+  background: linear-gradient(135deg, rgba(26, 116, 71, 0.18) 0%, rgba(26, 116, 71, 0.12) 100%);
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(26, 116, 71, 0.2);
+}
+
+.refreshBtn:active {
+  box-shadow: 0 2px 6px rgba(26, 116, 71, 0.15);
+}
+
+.refreshBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.refreshBtn svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.2s ease;
+}
+
+.refreshBtn:hover:not(:disabled) svg {
+  transform: scale(1.1);
+}
+
+.refreshBtn.refreshing {
+  background: linear-gradient(135deg, rgba(26, 116, 71, 0.15) 0%, rgba(26, 116, 71, 0.1) 100%);
+  border-color: var(--primary-color);
+}
+
+/* ID Cell */
+.idCell {
+  font-family: "Courier New", "Monaco", monospace;
+  font-weight: 600;
+  color: var(--heading-color);
+  padding: 0.875rem 1rem !important;
+  text-align: left !important;
+  font-size: 0.9rem;
+  vertical-align: middle !important;
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  box-sizing: border-box !important;
+  display: table-cell !important;
+}
+
+/* Ensure Portfolio ID column cells match header */
+.tableContainer table tbody td:nth-child(2) {
+  text-align: left !important;
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  padding: 0.875rem 1rem !important;
+  box-sizing: border-box !important;
+  vertical-align: middle !important;
+  display: table-cell !important;
+}
+
+/* Name Cell */
+.nameCell {
+  display: table-cell !important;
+  padding: 0.875rem 1rem !important;
+  text-align: left !important;
+  vertical-align: middle !important;
+  width: auto;
+  box-sizing: border-box !important;
+}
+
+/* Ensure Portfolio Name column cells match header */
+.tableContainer table tbody td:nth-child(3) {
+  text-align: left !important;
+  padding: 0.875rem 1rem !important;
+  box-sizing: border-box !important;
+  vertical-align: middle !important;
+  display: table-cell !important;
+}
+
+.portfolioName {
+  flex: 1;
+  font-weight: 500;
+  color: var(--heading-color);
+  transition: color 0.2s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tableRow:hover .portfolioName {
+  color: var(--primary-color);
+}
+
+/* Status Badge */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: fadeInScale 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.successBadge {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.2);
+}
+
+.errorBadge {
+  color: var(--primary-color);
+  background: rgba(26, 116, 71, 0.12);
+  box-shadow: 0 2px 6px rgba(26, 116, 71, 0.2);
+}
+
+/* Empty State */
+.emptyState {
+  padding: 3rem 1.5rem !important;
+  text-align: center;
+}
+
+.addButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--primary-color) 0%, rgba(26, 116, 71, 0.9) 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(26, 116, 71, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.addButton::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.addButton:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.addButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(26, 116, 71, 0.35);
+}
+
+.addButton:active {
+  transform: translateY(0);
+}
+
+.addButton svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.addButton:hover svg {
+  transform: rotate(90deg) scale(1.1);
+}
+
+.addButton span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contentContainer {
+    gap: 1rem;
+  }
+
+  .searchSection {
+    padding: 1rem 1rem;
+    border-radius: 14px;
+    margin-bottom: 0.875rem;
+  }
+
+  .searchWrapper {
+    max-width: 100%;
+  }
+
+  .searchWrapper :global(input[class*="input"]) {
+    height: 3rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .searchWrapper :global(div[class*="container"]) {
+    height: 3rem !important;
+  }
+
+  .tableContainer {
+    border-radius: 10px;
+  }
+
+  .refreshBtn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .refreshBtn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .tableHeader {
+    font-size: 0.7rem !important;
+    padding: 0.75rem 0.5rem !important;
+  }
+
+  .actionCell,
+  .idCell,
+  .nameCell {
+    padding: 0.75rem 0.5rem !important;
+    font-size: 0.85rem;
+  }
+
+  .addButton {
+    padding: 0.875rem 1.5rem;
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .contentContainer {
+    gap: 0.75rem;
+  }
+
+  .searchSection {
+    padding: 0.875rem 0.75rem;
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+  }
+
+  .searchWrapper :global(input[class*="input"]) {
+    height: 2.75rem !important;
+    font-size: 0.875rem !important;
+    padding-left: 2.75rem !important;
+  }
+
+  .searchWrapper :global(div[class*="container"]) {
+    height: 2.75rem !important;
+  }
+
+  .searchWrapper :global(svg[class*="icon"]) {
+    font-size: 1rem !important;
+    width: 1rem !important;
+    height: 1rem !important;
+    left: 1rem !important;
+  }
+
+  .tableContainer {
+    border-radius: 8px;
+  }
+
+  .refreshBtn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .refreshBtn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .tableHeader {
+    font-size: 0.65rem !important;
+    padding: 0.625rem 0.375rem !important;
+  }
+
+  .actionCell,
+  .idCell,
+  .nameCell {
+    padding: 0.625rem 0.375rem !important;
+    font-size: 0.8rem;
+  }
+
+  .portfolioName {
+    font-size: 0.85rem;
+  }
+
+  .statusBadge {
+    width: 20px;
+    height: 20px;
+  }
+
+  .statusBadge svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .addButton {
+    padding: 0.75rem 1.25rem;
+    font-size: var(--font-size-xs);
+    gap: 0.5rem;
+  }
+
+  .addButton svg {
+    width: 16px;
+    height: 16px;
+  }
+}

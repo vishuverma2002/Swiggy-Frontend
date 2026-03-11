@@ -1,0 +1,12 @@
+.icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-inline: 0.5rem;
+	cursor: pointer;
+	font-size: 2rem;
+	/* border: 1px solid white; */
+}
+.icon:hover {
+	color: var(--button-color);
+}

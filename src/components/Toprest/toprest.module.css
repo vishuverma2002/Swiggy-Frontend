@@ -1,42 +1,47 @@
 .container {
-  max-width: 1355px;
+  max-width: 100%;
   height: auto;
   position: relative;
-  margin-left: 120px;
-  margin-right: 70px;
-  /* color: #cbcbcb; */
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  top: 12px;
-  position: relative;
+  padding: 8px 0;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1c1c1c;
+  margin: 0;
+  letter-spacing: -0.3px;
 }
 
 .icon {
   display: flex;
-  margin-top: 25px;
-  margin-right: 150px;
-  gap: 10px;
-  font-size: 30px;
+  gap: 8px;
+  font-size: 28px;
   cursor: pointer;
   color: #686b78;
-  transform: translateY(-50%);
-  /* z-index: 10; */
+  transition: color 0.2s ease;
+}
+
+.icon:hover {
+  color: #fc8019;
 }
 
 .imaged {
-  /* display: block; */
   position: relative;
   width: 100%;
-  gap: 10px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   transition-duration: 500ms;
-  margin-top: 50px;
+  margin-top: 24px;
+  padding: 4px 0;
 }
 
 .imaged::-webkit-scrollbar {
@@ -48,67 +53,19 @@
   flex-direction: row;
   max-width: 1335px;
   position: relative;
-  gap: 10px;
+  gap: 12px;
   transition-duration: 500ms;
   width: max-content;
 }
 
-.imageCard {
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-  padding: 3px;
-  width: 250px;
+.cardSlot {
+  width: 320px;
   flex-shrink: 0;
-  gap: 8px;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
-  transition: transform 0.3s ease;
-  cursor: pointer;
 }
 
-.imageCard:hover {
-  transform: translateY(-10px);
-}
-
-.image {
-  /* width: 230px;
-  height: auto; */
-  width: 250px;
-  height: 250px;
-  border-radius: 10px;
-  border-radius: 10%;
-}
-
-.names {
-  margin-top: 10px;
-  font-size: 18px;
-}
-
-.heading {
-  margin-top: 10px;
-  font-size: 15px;
-  position: relative;
-  cursor: pointer;
-}
-
-.rating {
-  margin-top: 10px;
-  font-size: 18px;
-  color: #686b78;
-  cursor: pointer;
-}
-
-.sub {
-  margin-top: 10px;
-  font-size: 20px;
-  color: #686b78;
-  cursor: pointer;
-}
-
-.place {
-  font-size: 20px;
-  color: #686b78;
-  cursor: pointer;
+@media (max-width: 640px) {
+  .container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }

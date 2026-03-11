@@ -1,0 +1,94 @@
+.fileSelector {
+  padding: 2rem;
+  width: 22rem;
+  min-height: 22rem;
+  border: 2px dashed rgba(26, 116, 71, 0.4);
+  color: var(--primary-color);
+  flex-direction: column;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 1;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, rgba(26, 116, 71, 0.02) 0%, rgba(26, 116, 71, 0.05) 100%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  line-height: var(--line-height-relaxed);
+}
+
+.fileSelector::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(26, 116, 71, 0.05) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fileSelector:hover {
+  background: linear-gradient(135deg, rgba(26, 116, 71, 0.08) 0%, rgba(26, 116, 71, 0.12) 100%);
+  border: 2px dashed var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(26, 116, 71, 0.15), 0 2px 6px rgba(26, 116, 71, 0.1);
+  color: var(--primary-color);
+}
+
+.fileSelector:hover::before {
+  opacity: 1;
+}
+
+.uploaded {
+  border: 2px solid rgba(34, 197, 94, 0.6);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(34, 197, 94, 0.12) 100%);
+  color: #22c55e;
+  font-weight: var(--font-weight-semibold);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2), 0 2px 4px rgba(34, 197, 94, 0.1);
+}
+
+.uploaded:hover {
+  border-color: #22c55e;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.12) 0%, rgba(34, 197, 94, 0.16) 100%);
+  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.25), 0 2px 6px rgba(34, 197, 94, 0.15);
+}
+
+.error:hover {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(239, 68, 68, 0.12) 100%);
+  border: 2px dashed #ef4444;
+  color: #ef4444;
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.15), 0 2px 6px rgba(239, 68, 68, 0.1);
+}
+
+.error {
+  z-index: 2;
+  border: 2px dashed rgba(239, 68, 68, 0.5);
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(239, 68, 68, 0.08) 100%);
+  color: #ef4444;
+  animation: shake 0.5s both;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .fileSelector {
+    flex-grow: 1;
+  }
+}

@@ -1,105 +1,225 @@
 .header {
-  padding: 15px;
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
-  position: relative;
-  color: #686b78;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #ffffff;
+  padding: 8px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  color: #3d4152;
 }
-
 .heads {
-  max-width: 1355px;
-  max-height: auto;
-  /* border: 2px solid black; */
+  max-width: 1200px;
+  margin: 0 auto;
+  /* padding: 0 24px; */
   display: flex;
   align-items: center;
-  margin-left: 120px;
-  gap: 20px;
-  position: relative;
+  justify-content: space-between;
+  gap: 6rem;
 }
 
 .logo {
-  width: 100px;
-}
-
-.logo img {
-  width: 100px;
-  margin-left: 10px;
+  width: 10rem;
+  height: 3rem;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  top: 0;
-  bottom: 0;
-  object-fit: cover;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+  max-height: 3rem;
+  display: block;
+  object-fit: contain;
+  object-position: left center;
+  transform: scale(2);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+  transform: scale(2) scale(1.05);
 }
 
 .text {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 5rem;
+  gap: 8px;
+  font-size: 14px;
+  color: #1c1c1c;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text:hover {
+  background: rgba(252, 128, 25, 0.08);
 }
 
 .highlight {
-  border-bottom: 2px solid black;
-  gap: 5px;
+  border-bottom: 2px solid transparent;
+  font-weight: 600;
+  padding-bottom: 2px;
+  transition: all 0.3s ease;
 }
 
-.highlight:hover {
-  color: orange;
-  cursor: pointer;
-  border-bottom: 2px solid orange;
+.text:hover .highlight {
+  color: #fc8019;
+  border-bottom-color: #fc8019;
 }
 
 .icons {
-  display: inline;
-  font-size: 2.2rem;
-  font-weight: bold;
-  position: absolute;
-  top: 33.5px;
-  justify-content: center;
-  align-items: center;
-  color: orange;
-  cursor: pointer;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-  transition-duration: 500ms;
-}
-
-.sideMenu {
-  width: 530px;
-  background: white;
-  height: 100%;
-  position: absolute;
-  transition-duration: 400ms;
-}
-
-.heading {
   display: flex;
-  justify-content: center;
   align-items: center;
-  top: 150px;
-  left: 200px;
-  position: absolute;
+  font-size: 20px;
+  color: #fc8019;
+  transition: transform 0.3s ease;
 }
 
-.close {
+.text:hover .icons {
+  transform: translateY(2px);
+}
+
+/* Location Drawer Styles */
+.locationDrawer {
+  position: relative;
+  min-height: 100%;
   display: flex;
-  margin-top: 70px;
-  font-size: 25px;
-  margin-left: 35px;
-  cursor: pointer;
+  flex-direction: column;
 }
 
-.heading {
+.drawerCloseBtn {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgba(252, 128, 25, 0.1);
+  color: var(--primary-color);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  z-index: 10;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: btnFadeIn 0.5s ease forwards;
+}
+
+.drawerCloseBtn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.08) rotate(90deg);
+}
+
+@keyframes btnFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.locationDrawerHeader {
+  padding: 24px 24px 28px;
+  background: linear-gradient(135deg, #fff9f5 0%, #fff5ed 50%, #fffbf7 100%);
+  border-radius: 0 0 28px 28px;
+  border-bottom: 1px solid rgba(252, 128, 25, 0.12);
+  margin-bottom: 0;
+  animation: headerSlideDown 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes headerSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.locationIconWrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fc8019 0%, #ff9f43 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 24px rgba(252, 128, 25, 0.35);
+  animation: iconBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.locationIconWrap:hover {
+  box-shadow: 0 12px 32px rgba(252, 128, 25, 0.45);
+}
+
+@keyframes iconBounce {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.locationIcon {
+  font-size: 32px;
+  color: white;
+}
+
+.locationTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1c1c1c;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+  animation: textFadeIn 0.5s ease 0.4s forwards;
+  opacity: 0;
+}
+
+@keyframes textFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.locationSubtitle {
+  font-size: 0.95rem;
   color: #686b78;
-  display: flex;
-  left: 85px;
-  top: 130px;
+  margin: 0;
+  line-height: 1.5;
+  animation: textFadeIn 0.5s ease 0.5s forwards;
+  opacity: 0;
+}
+
+.locationDrawerBody {
+  flex: 1;
+  padding: 0 24px 24px;
+  animation: bodySlideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+  opacity: 0;
+}
+
+@keyframes bodySlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -1,0 +1,133 @@
+.container {
+  margin-block: 1.1rem;
+  margin-inline: 0.5rem;
+  position: relative;
+  height: 2.5rem;
+  flex-shrink: 1;
+}
+
+.label {
+  position: absolute;
+  transform: translateY(-1.5rem);
+  margin-bottom: 7px;
+  color: white;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+
+.fileinput {
+  visibility: hidden;
+}
+.input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  outline: none;
+  border: none;
+  background-color: var(--forth-color);
+  color: var(--text-primary-color);
+  border-radius: 8px;
+  height: 100%;
+  width: 100%;
+  padding-left: 1rem;
+  transition: all 0.2s;
+  display: flex;
+  font-size: 0.9rem;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.buttonUpload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 3rem;
+  position: absolute;
+  right: 0px;
+  color: white;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  border: 1px solid var(--primary-color);
+  border-radius: 3px;
+}
+.buttonUpload:hover {
+  background-color: var(--button-color);
+  border: 1px solid var(--button-color);
+}
+.input:hover {
+  border-bottom: 1px solid var(--primary-color);
+  border-left: 1px solid var(--primary-color);
+  box-shadow: 0 4px 12px rgba(26, 116, 71, 0.15), 0 2px 4px rgba(26, 116, 71, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+.input:active,
+.input:focus:hover {
+  border-bottom: 1px solid var(--primary-color);
+  border-left: 1px solid var(--primary-color);
+  box-shadow: 0 4px 12px rgba(26, 116, 71, 0.15), 0 2px 4px rgba(26, 116, 71, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+.input:focus:not(:hover) {
+  border-bottom: 1px solid var(--primary-color);
+  border-left: 1px solid var(--primary-color);
+  box-shadow: 0 4px 12px rgba(26, 116, 71, 0.15), 0 2px 4px rgba(26, 116, 71, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+.input::placeholder {
+  color: var(--placeholder-color);
+  opacity: 0.85;
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-normal);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input:hover::placeholder {
+  opacity: 1;
+  color: var(--placeholder-color);
+}
+
+.input:focus::placeholder {
+  opacity: 0.65;
+}
+.input[type="date"] {
+  padding-right: 0.8rem;
+}
+
+.input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(1);
+  font-size: 1.2rem;
+}
+
+.error {
+  z-index: 2;
+  border: 1px solid #ff000056;
+  /* border: 1px solid rgba(255, 0, 0, 0.678);
+  box-shadow: 2px 0px 16px -4px rgba(255, 0, 0, 0.62);
+  -webkit-box-shadow: 2px 0px 16px -4px rgba(255, 0, 0, 0.62);
+  -moz-box-shadow: 2px 0px 16px -4px rgba(255, 0, 0, 0.62); */
+  animation: shake 0.5s both;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    flex-grow: 1;
+  }
+}

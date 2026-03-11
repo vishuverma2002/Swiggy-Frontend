@@ -1,0 +1,82 @@
+.toastContainer {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  background: rgb(0, 0, 0);
+  padding: 1.25rem 1.5rem;
+  min-width: 18rem;
+  max-width: 24rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: toastSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+  z-index: 5000;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes toastSlideIn {
+  0% {
+    right: -100%;
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    right: 20px;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.title {
+	margin-bottom: 0.5rem;
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-semibold);
+	line-height: var(--line-height-tight);
+	white-space: nowrap;
+	color: white;
+	letter-spacing: var(--letter-spacing-wide);
+}
+
+.message {
+	font-size: var(--font-size-sm);
+	line-height: var(--line-height-relaxed);
+	white-space: normal;
+	color: rgba(255, 255, 255, 0.95);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 0%;
+  border-radius: 0 0 12px 12px;
+  animation: animateProgress 3s ease-in 1s both;
+}
+
+@keyframes animateProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.success {
+  background: linear-gradient(90deg, rgba(5, 65, 5, 0.9), rgba(5, 65, 5, 0.7));
+}
+
+.successDiv {
+  background: linear-gradient(135deg, rgb(35, 145, 35), rgb(28, 120, 28));
+}
+
+.danger {
+  background: linear-gradient(90deg, rgba(220, 38, 38, 0.9), rgba(220, 38, 38, 0.7));
+}
+
+.dangerDiv {
+  background: linear-gradient(135deg, rgb(246, 71, 71), rgb(220, 38, 38));
+}

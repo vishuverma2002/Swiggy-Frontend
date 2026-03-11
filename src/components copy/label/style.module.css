@@ -1,0 +1,5 @@
+.label{
+    font-size:.9rem;
+    font-style: italic;
+    color :var(--primary-color);    
+}
